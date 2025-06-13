@@ -24,10 +24,10 @@ const Home = () => {
           transition={{ duration: 1.5, ease: 'easeOut', delay: 0.5 }}
         >
           <h1 className="text-6xl md:text-8xl font-bold gradient-text font-space">
-            Creative
+            Kunal Gupta
           </h1>
           <h2 className="text-4xl md:text-6xl font-light text-foreground">
-            Motion Designer
+            
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Crafting immersive digital experiences through innovative design and cutting-edge technology

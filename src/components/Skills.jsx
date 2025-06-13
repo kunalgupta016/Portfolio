@@ -5,12 +5,15 @@ const Skills = () => {
   const progressRefs = useRef([]);
 
   const skills = [
-    { name: 'React & TypeScript', level: 95 },
-    { name: 'Three.js & WebGL', level: 85 },
-    { name: 'GSAP Animation', level: 90 },
-    { name: 'UI/UX Design', level: 80 },
-    { name: 'Node.js & Backend', level: 75 },
-    { name: 'Mobile Development', level: 70 }
+    { name: 'React & JavaScript', level: 70 },
+    { name: 'GSAP and Framer', level: 70},
+    { name: 'Frontend Development', level: 70 },
+    { name: 'Docker' ,level:50},
+    { name: 'DSA' , level: 60 },
+    { name: 'Problem Solving', level: 65 },
+    { name: 'HTML & CSS', level: 80 },
+    { name: 'Tailwind CSS', level: 89 },
+    { name: 'C , C++ , Python , Java', level: 70 },
   ];
 
   const sectionVariants = {
@@ -76,18 +79,7 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* 3D Skills Icons */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {['⚛️', '🎨', '📱', '🚀'].map((icon, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.1 }}
-              className="text-6xl text-center neumorph p-8 rounded-xl hover:glow-effect transition-all duration-300 cursor-pointer"
-            >
-              {icon}
-            </motion.div>
-          ))}
-        </div>
+        
       </div>
     </motion.section>
   );

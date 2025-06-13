@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { useRef } from 'react';
 
 const Contact = () => {
   const fadeUpVariant = {
@@ -13,9 +15,29 @@ const Contact = () => {
     }
   };
 
+  const form = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted');
+
+    emailjs
+      .sendForm(
+        'service_p1k8gwd',     // Replace with your EmailJS service ID
+        'template_5o9evxl',    // Replace with your EmailJS template ID
+        form.current,
+        'WYCqYT6v-txY7C494'      // Replace with your EmailJS public key
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+          form.current.reset();
+        },
+        (error) => {
+          console.log(error.text);
+          alert('An error occurred. Please try again.');
+        }
+      );
   };
 
   return (
@@ -57,26 +79,18 @@ const Contact = () => {
                   <div>
                     <p className="font-semibold">Email</p>
                     <p className="text-muted-foreground">
-                      hello@portfolio.com
+                      kunalgupta55005@gmail.com
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-portfolio-secondary rounded-full flex items-center justify-center">
-                    📱
-                  </div>
-                  <div>
-                    <p className="font-semibold">Phone</p>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                  </div>
-                </div>
+
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-portfolio-accent rounded-full flex items-center justify-center">
                     📍
                   </div>
                   <div>
                     <p className="font-semibold">Location</p>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">Jaipur, Rajasthan</p>
                   </div>
                 </div>
               </div>
@@ -97,6 +111,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <motion.form
+            ref={form}
             onSubmit={handleSubmit}
             className="space-y-6"
             variants={fadeUpVariant}
@@ -109,6 +124,7 @@ const Contact = () => {
                 <div>
                   <input
                     type="text"
+                    name="user_name"
                     placeholder="Your Name"
                     className="w-full p-4 bg-background/50 border border-border rounded-lg focus:border-portfolio-primary focus:outline-none transition-colors duration-300"
                     required
@@ -117,6 +133,7 @@ const Contact = () => {
                 <div>
                   <input
                     type="email"
+                    name="user_email"
                     placeholder="Your Email"
                     className="w-full p-4 bg-background/50 border border-border rounded-lg focus:border-portfolio-primary focus:outline-none transition-colors duration-300"
                     required
@@ -125,6 +142,7 @@ const Contact = () => {
                 <div>
                   <input
                     type="text"
+                    name="subject"
                     placeholder="Subject"
                     className="w-full p-4 bg-background/50 border border-border rounded-lg focus:border-portfolio-primary focus:outline-none transition-colors duration-300"
                     required
@@ -132,6 +150,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <textarea
+                    name="message"
                     placeholder="Your Message"
                     rows="5"
                     className="w-full p-4 bg-background/50 border border-border rounded-lg focus:border-portfolio-primary focus:outline-none transition-colors duration-300 resize-none"

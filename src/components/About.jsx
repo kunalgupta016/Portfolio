@@ -36,13 +36,13 @@ const About = () => {
           className="glass p-12 rounded-3xl backdrop-blur-md"
         >
           <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            I'm a passionate motion designer and frontend developer with over 5 years of experience creating 
-            immersive digital experiences. I specialize in combining cutting-edge web technologies with 
-            stunning visual design to bring ideas to life.
+           👋 Hello! I'm Kunal Gupta, a passionate frontend developer and Computer Science student with a strong interest in designing modern, user-friendly websites. I love bringing ideas to life through clean and responsive UI using HTML, CSS, JavaScript, and React.
           </p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            My expertise spans from React and Three.js to advanced animation libraries like GSAP, 
-            always pushing the boundaries of what's possible in web development.
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+           During my journey, I’ve worked on exciting projects like a NEET Quiz App, Resume Builder, and a Flipkart Clone, focusing on performance, design, and real-world usability. I’ve also explored AWS services to host scalable static websites and integrate basic backend logic using Lambda, EC2, and S3.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            I enjoy learning new technologies and solving real-world problems using code. Whether it’s building visually appealing UIs or deploying apps to the cloud, I’m always up for a challenge!
           </p>
         </motion.div>
       </div>

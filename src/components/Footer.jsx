@@ -45,7 +45,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="text-sm text-muted-foreground">
-            © 2024 Creative Portfolio. Designed with passion and built with modern technologies.
+            © 2025 Creative Portfolio By Kunal Gupta. Designed with passion and built with modern technologies.
           </div>
         </motion.div>
       </div>

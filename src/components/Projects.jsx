@@ -1,30 +1,41 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+
   const projects = [
     {
-      title: "Interactive 3D Portfolio",
-      description: "A modern portfolio website featuring Three.js animations and smooth transitions",
-      tech: ["React", "Three.js", "GSAP", "TypeScript"],
+      title: "Neet",
+      description: "NEET is a powerful online quiz app built for NEET exam preparation. It offers subject-wise timed quizzes in Physics, Chemistry, Biology, and a Mixed section. With real-time scoring, instant feedback, and a clean interface, students can practice effectively and monitor their readiness for the exam. Perfect for quick revisions and daily practice!",
+      tech: ["React", "Framer Motion", "Tailwind", "JavaScript"],
+      link: "https://neet-rho.vercel.app/",
+      code: "https://github.com/kunalgupta016/Neet",
       color: "from-purple-500 to-pink-500"
     },
     {
-      title: "E-commerce Platform",
-      description: "Full-stack e-commerce solution with real-time updates and secure payments",
-      tech: ["Next.js", "Node.js", "MongoDB", "Stripe"],
+      title: "Bubble Hit Game",
+      description: "Bubble Hit is an engaging number-tapping game designed to boost focus and reaction speed. Players must identify and hit the correct target number from a set of randomly appearing bubbles before time runs out. It's perfect for quick fun sessions and brain training.",
+      tech: ["HTML", "CSS", "JS"],
+      link:"https://hubble-bubble.netlify.app/",
+      code:"https://github.com/kunalgupta016/Bubble-Game",
       color: "from-blue-500 to-cyan-500"
     },
     {
-      title: "Motion Graphics Dashboard",
-      description: "Analytics dashboard with stunning animations and data visualizations",
-      tech: ["Vue.js", "D3.js", "WebGL", "Python"],
+      title: "Quote Generator",
+      description: "A simple and interactive Quote Generator built with React and powered by the Quotable API. This app allows users to generate quotes based on tags or get random quotes. The quotes can also be shared via social media platforms such as Facebook, Twitter, WhatsApp, and Email.",
+      tech: ["React.js", "Framer Motion", "Axios", "Tailwind CSS"],
+      link:"https://quote-generator-eight-ruddy.vercel.app/",
+      code:"https://github.com/kunalgupta016/Quote-Generator",
       color: "from-green-500 to-emerald-500"
     },
     {
-      title: "Mobile App Design",
-      description: "Cross-platform mobile application with intuitive user experience",
-      tech: ["React Native", "Expo", "Firebase", "Figma"],
-      color: "from-orange-500 to-red-500"
+      title: "Portfolio Website",
+      description: "Interctive portfolio website showcasing my skills, projects, and experiences. Built with React and Tailwind CSS, it features smooth animations, responsive design, and a modern layout to highlight my work effectively.",
+      tech: ["Tailwind", "React", "Framer", "Three.js"],
+      color: "from-orange-500 to-red-500",
+      link: "https://www.figma.com/file/8b1k0Z2X5z9g3Y4c7j6d8F/Web-App-Design?node-id=0%3A1&t=Jx5m4Qy7v2f6a5e8-1",
+      code: "https://github.com/kunalgupta016/Portfolio"
     }
   ];
 
@@ -50,6 +61,9 @@ const Projects = () => {
     }
   };
 
+  // Show only 2 projects if showAll is false
+  const visibleProjects = showAll ? projects : projects.slice(0, 2);
+
   return (
     <section id="projects" className="py-20 px-6">
       <div className="container mx-auto">
@@ -63,13 +77,13 @@ const Projects = () => {
         </div>
 
         <motion.div
+          key={showAll ? "expanded" : "collapsed"}
           className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          animate="visible"
         >
-          {projects.map((project, index) => (
+          {visibleProjects.map((project) => (
             <motion.div
               key={project.title}
               variants={cardVariants}
@@ -99,12 +113,26 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-4">
-                  <button className="px-6 py-2 bg-portfolio-primary text-white rounded-lg hover:bg-portfolio-accent transition-colors duration-300">
-                    View Project
-                  </button>
-                  <button className="px-6 py-2 glass rounded-lg hover:glow-effect transition-all duration-300">
-                    View Code
-                  </button>
+                  {project.link && (
+                    <a
+                      className="px-6 py-2 bg-portfolio-primary text-white rounded-lg hover:bg-portfolio-accent transition-colors duration-300"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Project
+                    </a>
+                  )}
+                  {project.code && (
+                    <a
+                      className="px-6 py-2 glass rounded-lg hover:glow-effect transition-all duration-300"
+                      href={project.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Code
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -113,14 +141,17 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        <div className="text-center mt-16">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="px-8 py-4 bg-gradient-to-r from-portfolio-primary to-portfolio-accent text-white rounded-full font-semibold transition-transform duration-300 glow-effect"
-          >
-            View All Projects
-          </motion.button>
-        </div>
+        {!showAll && (
+          <div className="text-center mt-16">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className="px-8 py-4 bg-gradient-to-r from-portfolio-primary to-portfolio-accent text-white rounded-full font-semibold transition-transform duration-300 glow-effect"
+              onClick={() => setShowAll(true)}
+            >
+              View All Projects
+            </motion.button>
+          </div>
+        )}
       </div>
     </section>
   );
